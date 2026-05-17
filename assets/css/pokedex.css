@@ -70,6 +70,15 @@
     }
   }
 
+  /* Foi pensado no smatwatch para não houvesse vazamento da imagem fora div */
+  @media screen and (min-width: 300px) {
+    .pokemon {
+      /* Estica a imagem para preencher toda a largura e altura do contêiner */
+      object-fit: fill; 
+      width: 100%;
+    }
+  }
+
 
 @media screen and (min-width: 576px) {
     .pokemons {
