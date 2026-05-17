@@ -14,8 +14,18 @@ body {
     height: 100vh;
     padding: 1rem; 
     background-color: #fff;
+
 }
 
 
-
  /* Daqui para cima está revisado  */
+
+
+@media screen and (min-width: 992px) {
+    .content {
+    max-width: 992px;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 1rem;
+    }
+  }
