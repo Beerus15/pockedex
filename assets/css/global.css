@@ -9,3 +9,20 @@
 .content {
     margin: 0;
 }
+
+ol.pokemon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ol.pokemon li {
+    margin: 0.5rem;
+    padding: 2rem 1rem;
+    background-color: #14A06F;
+    border-radius: 1rem;
+    color: #fff;
+    height: 100px;
+}
