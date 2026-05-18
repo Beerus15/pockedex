@@ -20,10 +20,7 @@ pokeApi.getPokemons = (offset = 0, limit = 5) => {
         .then((jsonBody) => jsonBody.results)
         .then((pokemons) => pokemons.map(pokeApi.getPokemonDetail))
         .then((detailRequest) => Promise.all(detailRequest))
-        .then((pokemonsDetails) => {
-            debugger
-            console.log(pokemonsDetails);
-        })
+        .then((pokemonsDetails) => pokemonsDetails)
         .catch((error) => console.error(error))
 };
 
