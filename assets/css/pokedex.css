@@ -66,15 +66,16 @@
 
 @media screen and (min-width: 380px) {
     .pokemons {
-    grid-template-columns: 1fr 1fr;   
+    grid-template-columns: 1fr;   
     }
   }
 
   /* Foi pensado no smatwatch para não houvesse vazamento da imagem fora div */
   @media screen and (min-width: 300px) {
-    .pokemon {
+    .pokemons {
       /* Estica a imagem para preencher toda a largura e altura do contêiner */
       object-fit: fill; 
+      grid-template-columns: 1fr;
       width: 100%;
     }
   }
