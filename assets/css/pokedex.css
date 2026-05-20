@@ -64,6 +64,12 @@
 }
 
 
+
+button.btn-cry {
+    width: 20px;
+    height: 20px;
+}
+
 @media screen and (min-width: 380px) {
     .pokemons {
     grid-template-columns: 1fr;   
