@@ -7,11 +7,6 @@
     margin: 0;
 }
 
-.pokemon .detail .type {
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 1px;
-    
-}
 
 .normal {
     background-color: #a6a877;
@@ -107,6 +102,7 @@
 .pokemon .name {
     color: #fff;
     margin-bottom: 0.25;
+    text-transform: capitalize;
 }
 
 .pokemon .detail {
@@ -131,6 +127,8 @@
     margin:  .25rem 0;
     font-size: .625rem;
     border-radius: 1rem;
+    filter: brightness(1.1);
+    text-align: center;
 }
 
 
@@ -140,11 +138,11 @@
 }
 
 
-
+/*  A ser implmentado
 button.btn-cry {
     width: 20px;
     height: 20px;
-}
+} */
 
 @media screen and (min-width: 380px) {
     .pokemons {
