@@ -1,0 +1,95 @@
+[33mcommit 69f1e16faba8e8607a835b31ee78fa9cf56a6245[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Mon May 18 12:24:34 2026 -0300
+
+    Versão 3.5.1 da Pokédex - Grande mudança implementação script gerar lista com pokemons
+
+[33mcommit dc198e55e36fd8e4ca91fe6b536475a02569a63f[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Mon May 18 11:54:08 2026 -0300
+
+    Versão 3.5.1 da Pokédex - Grande mudança implementação script gerar lista com pokemons
+
+[33mcommit bf6e4868b4ea1ebcdfd13fca66c0593a50d5f342[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 22:28:51 2026 -0300
+
+    Versão 3.2.1 da Pokédex - Grande mudança implementação script gerar lista com pokemons
+
+[33mcommit b2a621b52be25e78e9cb94185745bbb014c7fd68[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 19:21:37 2026 -0300
+
+    Versão 2.1.1 da Pokédex - Mexendo com Promisses
+
+[33mcommit f84708c64c83d359ab6ed0196b01ab4be0c4e335[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 18:55:37 2026 -0300
+
+    Versão 2.1 da Pokédex - Integração PokeApi
+
+[33mcommit 518b35918996f311321904838a4f5f276ec1f0d3[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 17:50:18 2026 -0300
+
+    Versão 2.0 da Pokédex
+
+[33mcommit 68025fc14ad635333a72b39f2f494fdd597fbd97[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 15:22:40 2026 -0300
+
+    Grande modificação arquivo global.css e criação arquivo pokedex.css
+
+[33mcommit 6d80af5f5bcfe7362938f467006a1306841c853f[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 13:37:50 2026 -0300
+
+    Modificação layout pokemons
+
+[33mcommit 21160ac06f203ef108e0e6d691faf84ded5bf441[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 12:47:56 2026 -0300
+
+    Adicionado pokemons
+
+[33mcommit 49c743b738b84c1ad09d9f85fe82b2a34d4f8cc8[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 12:25:01 2026 -0300
+
+    Adicionado Font Roboto
+
+[33mcommit d86cf925916b6ac04ed268a057e49a6a5f06171c[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 12:03:45 2026 -0300
+
+    Adicionado Font Roboto
+
+[33mcommit ccc6a07c113bd49ca08b7da7d2a33bb57a52ae4f[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 11:48:12 2026 -0300
+
+    Adicionado Font Roboto
+
+[33mcommit e9aa643e8fc0f87baefdfab1962a4c1387fd92cb[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 10:59:33 2026 -0300
+
+    Padronizei organização das pastas da pockedex
+
+[33mcommit 13183439ae6860c2fa48813031b168355d7216e4[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 10:46:14 2026 -0300
+
+    Adicionei novas funcionalidades na pokedex
+
+[33mcommit d33c5bbae13fda97b4672b0a7506b697cff94135[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 10:33:36 2026 -0300
+
+    Adicionei novas funcionalidades na pokedex
+
+[33mcommit d6818d1390101449d60bbeb5faaa58c78c13960c[m
+Author: root <root@kalipc.internet.fazzy.net.br>
+Date:   Sun May 17 10:20:26 2026 -0300
+
+    first commit
