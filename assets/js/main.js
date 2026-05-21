@@ -8,40 +8,49 @@ function convertPokemonNumerationPadron(pokemon) {
 }
 
 
+const pokemonList = (document.getElementById('pokemonList')); // estamos pegando nossa lista pokemon
 
-function convertPokemonToLi(pokemon) {
-    return `
-    
-        <li class="pokemon ${pokemon.type}">
-                    <span class="number">#${convertPokemonNumerationPadron(pokemon)}</span>
-                    <span class="name">${pokemon.name}</span>
+const LoadMoreButton = document.getElementById('LoadMoreButton')
+const limit = 5
+let offset = 0
 
-                    <div class="detail">
-                        <ol class="types">
-                          ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-                        </ol>
-                    <img src="${pokemon.photo}" alt="${pokemon.name}">
-
-                    </div>
-                </li>
-        
-    
-    `
-}
                    // código do cry para ser implmentado mais a frente
 
-const pokemonList = (document.getElementById('pokemonList')); // estamos pegando nossa lista pokemon
 
 
 // Pega os itens de pokemon com getPokemon, mapeia os itens de li com
 // função map, junta todos os li sem separador usando join('')
 
 
-pokeApi.getPokemons().then((pokemons = []) => {
-    pokemonList.innerHTML += pokemons.map(convertPokemonToLi).join(''); // retorna a lista como string e retorna todos elemento com função join
- 
-
-    })
+function loadPokemonItens(offset, limit){
 
 
 
+    pokeApi.getPokemons().then((pokemons = []) => {
+        const newHtml =  pokemons.map(pokemon => `
+    
+            <li class="pokemon ${pokemon.type}">
+                        <span class="number">#${convertPokemonNumerationPadron(pokemon)}</span>
+                        <span class="name">${pokemon.name}</span>
+
+                        <div class="detail">  
+                            <ol class="types">
+                            ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                            </ol>
+                        <img src="${pokemon.photo}" alt="${pokemon.name}">
+
+                        </div>
+                    </li>
+            
+        
+        `).join(''); // retorna a lista como string e retorna todos elemento com função join
+        pokemonList.innerHTML += newHtml
+
+        })
+}
+
+loadPokemonItens(limit, offset)
+
+LoadMoreButton.addEventListener('click', () => {
+    loadPokemonItens()
+})
