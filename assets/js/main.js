@@ -11,8 +11,9 @@ function convertPokemonNumerationPadron(pokemon) {
 const pokemonList = (document.getElementById('pokemonList')); // estamos pegando nossa lista pokemon
 
 const LoadMoreButton = document.getElementById('LoadMoreButton')
-const limit = 5
-let offset = 0
+
+const limit = 5;
+let offset = 0;
 
                    // código do cry para ser implmentado mais a frente
 
@@ -23,11 +24,8 @@ let offset = 0
 
 
 function loadPokemonItens(offset, limit){
-
-
-
-    pokeApi.getPokemons().then((pokemons = []) => {
-        const newHtml =  pokemons.map(pokemon => `
+    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+        const newHtml =  pokemons.map((pokemon) => `
     
             <li class="pokemon ${pokemon.type}">
                         <span class="number">#${convertPokemonNumerationPadron(pokemon)}</span>
@@ -49,8 +47,10 @@ function loadPokemonItens(offset, limit){
         })
 }
 
-loadPokemonItens(limit, offset)
+loadPokemonItens(offset, limit)
 
 LoadMoreButton.addEventListener('click', () => {
-    loadPokemonItens()
+    offset += limit
+    loadPokemonItens(offset, limit);
+
 })
