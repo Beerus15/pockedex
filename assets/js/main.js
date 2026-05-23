@@ -12,11 +12,11 @@ const pokemonList = (document.getElementById('pokemonList')); // estamos pegando
 
 const LoadMoreButton = document.getElementById('LoadMoreButton')
 
-const limit = 5;
+const maxRecords = 151
+const limit = 10;
 let offset = 0;
 
                    // código do cry para ser implmentado mais a frente
-
 
 
 // Pega os itens de pokemon com getPokemon, mapeia os itens de li com
@@ -42,15 +42,25 @@ function loadPokemonItens(offset, limit){
             
         
         `).join(''); // retorna a lista como string e retorna todos elemento com função join
-        pokemonList.innerHTML += newHtml
+        pokemonList.innerHTML += newHtml;
 
         })
 }
 
 loadPokemonItens(offset, limit)
 
-LoadMoreButton.addEventListener('click', () => {
-    offset += limit
-    loadPokemonItens(offset, limit);
 
+LoadMoreButton.addEventListener('click', () => {
+    offset += limit;
+    const qtRecordsWithNexPage = offset + limit;
+
+    
+    if(qtRecordsWithNexPage >= maxRecords) {
+        const newLimit = maxRecords - offset;
+        loadPokemonItens(offset, newLimit);
+
+        LoadMoreButton.parentElement.removeChild(LoadMoreButton)
+    }else {
+        loadPokemonItens(offset, limit)
+    }
 })
