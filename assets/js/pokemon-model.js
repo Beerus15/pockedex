@@ -6,4 +6,5 @@ class Pokemon {
     types = [];
     photo;
     cry; // a ser implmentado som dos pokemons
+    stats;
 }

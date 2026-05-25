@@ -17,10 +17,33 @@ body {
 
 }
 
+.btn-colun div {
+    display: flex;
+}
+/* Oculta os pokemons para mostrar status */
+.ocultadoPOkemon{
+    display: none;
+}
 
- /* Daqui para cima está revisado  */
+.statusPOkemons{
+    display: flex;
+}
 
 
+.mostrarStatusPokemon{
+    display: block;
+}
+
+.base-status{
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  padding: 1px;
+}
+
+.btn-status-pokemon{
+    font-weight: bold;
+}
 @media screen and (min-width: 992px) {
     .content {
     max-width: 992px;

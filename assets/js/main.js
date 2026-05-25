@@ -23,11 +23,12 @@ let offset = 0;
 // função map, junta todos os li sem separador usando join('')
 
 
+
 function loadPokemonItens(offset, limit){
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         const newHtml =  pokemons.map((pokemon) => `
-    
-            <li class="pokemon ${pokemon.type}">
+        
+        <li class="pokemon ${pokemon.type}">
                         <span class="number">#${convertPokemonNumerationPadron(pokemon)}</span>
                         <span class="name">${pokemon.name}</span>
 
@@ -35,8 +36,8 @@ function loadPokemonItens(offset, limit){
                             <ol class="types">
                             ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
                             </ol>
-                        <img src="${pokemon.photo}" alt="${pokemon.name}">
-
+                        <button type="button" class="button"><img src="${pokemon.photo}" alt="${pokemon.name}">
+</button>
                         </div>
                     </li>
             
@@ -47,20 +48,63 @@ function loadPokemonItens(offset, limit){
         })
 }
 
-loadPokemonItens(offset, limit)
+loadPokemonItens(offset, limit) 
 
 
-LoadMoreButton.addEventListener('click', () => {
-    offset += limit;
-    const qtRecordsWithNexPage = offset + limit;
 
-    
-    if(qtRecordsWithNexPage >= maxRecords) {
-        const newLimit = maxRecords - offset;
-        loadPokemonItens(offset, newLimit);
 
-        LoadMoreButton.parentElement.removeChild(LoadMoreButton)
-    }else {
-        loadPokemonItens(offset, limit)
+document.addEventListener('click', (event) => {
+    // Se clicou no botão do Pokémon (ou na imagem dentro dele)
+    if (event.target.closest('.button')) {
+        let ocultador = document.getElementById('pokemonList');
+        ocultador.className = 'ocultadoPOkemon';
+
+        let mostrarStatus = document.getElementById()
+        mostrarStatus.className = 'mostrarStatusPokemon';
+        
     }
-})
+});
+
+SobreCritaLoadMoreItens(offset, limit);
+
+
+
+const mostrarStatusPokemon = (document.getElementById('visivelStatus')); // estamos pegando nossa lista pokemon
+
+function SobreCritaLoadMoreItens(offset, limit){
+    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+        
+        // Declarando corretamente o primeiro pokemon da lista
+        const pokemon = pokemons[0]; 
+        
+        const newHtml = `        
+        <div id="statusPOkemons" class="detail">          
+        
+        <button type="button" class="button">
+            <img src="${pokemon.photo}" alt="${pokemon.name}">
+        </button>  
+         <ol>
+            <li>Base-status
+                    <ol class="base-status">
+            
+                    
+                            </li>
+                        <div class="btn-status-pokemon"> 
+                            ${pokemon.statsName.map((stat) => `<li class="type ${stat}">${stat}</li>`).join('')}
+                        </div>
+                        <div>
+                            ${pokemon.base_stat.map((statsValues) => `<li class="type ${statsValues}">${statsValues}</li>`).join('')}
+                        </div>
+                        <div>  
+                            ${pokemon.base_stat.map((statsValues) => `<progress class="gameboy-progress" value=${statsValues} max="100"></progress>`).join('')}
+                        </div>
+                        </ol>
+                </li>
+                </ol>
+           </div>
+        `;
+
+        // ESSA LINHA MUDOU DE LUGAR: Agora ela está dentro do .then() e vai funcionar!
+        mostrarStatusPokemon.innerHTML = newHtml;
+    }); 
+}
