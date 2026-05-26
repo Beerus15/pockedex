@@ -1,0 +1,165 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f8fc;
+    /* background-color: rgb(246, 248, 252); opcional*/
+}
+
+
+.content {
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem; 
+    background-color: #fff;
+
+}
+
+.navbar-menu-status{
+    background-color: #dc0a2d;
+    height: 49px;
+    width: 100%;
+    align-items: center;
+    background-image: url('');
+}
+
+
+
+.btn-colun div {
+    display: flex;
+}
+/* Oculta os pokemons para mostrar status */
+.ocultadoPOkemon{
+    display: none;
+}
+
+.statusPOkemons{
+    display: flex;
+}
+
+
+.mostrarStatusPokemon{
+    display: block;
+}
+
+.blockPokemon{
+    display: none;
+}
+
+.btn-status-pokemon{
+display: flex;
+height: 100%;
+flex-direction: column;
+}
+.base-status{
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    padding: 1px;
+    white-space: nowrap;
+}
+
+.navbar-menu-status{
+    background-color: #dc0a2d;
+    height: 49px;
+    width: 100%;
+    align-content: center;
+}
+
+.navbar-menu-status a img {
+    object-fit: cover;
+}
+
+.navbar-menu-status  a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+.object-contain{
+    object-fit: cover;
+}
+
+
+
+nav.navbar-menu-status ol {
+    align-content: center;
+}
+
+
+
+nav#menu-status  {
+    gap: 1rem;
+    list-style: none;
+}
+
+.btn-base-status{
+    display: flex;
+
+}
+
+.logo-pockedex {
+    object-fit: contain;
+}
+
+.navbar-menu-status li img {
+    /* display: flex; */
+    display: flex;
+    width: 150%;
+}
+.btn-img-ckedex{
+    width: 300px;
+    display: flex;
+}
+
+
+.navbar-menu-status {
+    background-image: url('../images/logos/logo-pokedex.png');
+    object-fit: contain;
+    position: relative;
+    background-size: cover;
+    text-align: center;
+    align-content: center;
+}
+
+
+.btn-status-pokemon{
+    font-weight: bold;
+}
+
+.btn-list-pokemon-ordenation li {
+    list-style: none;
+    gap: 1rem;
+
+}
+
+.btn-list-pokemon-ordenation {
+    display: flex;
+    gap: 1rem;
+    font-size: small;
+    position: absolute;
+}
+
+.gameboy-progress0{
+    width: 100%;
+    background-color: transparent;
+}
+
+
+nav {
+    display: flex;
+}
+
+
+
+@media screen and (min-width: 992px) {
+    .content {
+    max-width: 992px;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 1rem;
+    }
+  }

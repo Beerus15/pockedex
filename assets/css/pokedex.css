@@ -1,0 +1,307 @@
+
+.pokemons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+}
+
+.normal {
+    background-color: #a6a877;
+}
+
+.grass {
+    background-color: #77c850;
+}
+
+.fire {
+    background-color: #ee7f30;
+}
+
+.water {
+    background-color: #678fee;
+}
+
+.electric {
+    background-color: #f7cf2e;
+}
+
+.ice {
+    background-color: #98d5d7;
+}
+
+.ground {
+    background-color: #dfbf69;
+}
+
+.flying {
+    background-color: #a98ff0;
+}
+
+.poison {
+    background-color: #a040a0;
+}
+
+.fighting {
+    background-color: #bf3029;
+}
+
+.psychic {
+    background-color: #f65687;
+}
+
+.dark {
+    background-color: #725847;
+}
+
+.rock {
+    background-color: #b8a137;
+}
+
+.bug {
+    background-color: #a8b720;
+}
+
+.ghost {
+    background-color: #6e5896;
+}
+
+.steel {
+    background-color: #b9b7cf;
+}
+
+.dragon {
+    background-color: #6f38f6;
+}
+
+.fairy {
+    background-color: #f9aec7;
+}
+
+
+
+
+
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.pokemon .number {
+    color: #000;
+    text-align: right;
+    opacity: .3;
+    font-size: .625rem;
+}
+
+.pokemon .name {
+    color: #fff;
+    margin-bottom: 0.25;
+    text-transform: capitalize;
+}
+
+.pokemon .detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Daqui para baixo está revisado  */
+
+.pokemon .detail .types {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+.pokemon .detail .types .type {
+    color: #fff;
+    padding: .25rem .5rem;
+    margin:  .25rem 0;
+    font-size: .625rem;
+    border-radius: 1rem;
+    filter: brightness(1.1);
+    text-align: center;
+}
+
+
+.pokemon .detail img {
+    max-width: 100%;
+    height: 70px;
+}
+
+
+/* Cores de preenchimento do status do pokemon */
+
+
+.hp-color {
+    background-color: #4caf50
+}
+
+.attack-color {
+    color: #f44336
+}
+
+.defense-color {
+    color: #2196f3
+}
+
+.sp-atack-color {
+    color: #FF9800
+}
+
+.defense-color {
+    color: #9c27b0
+}
+.speed-color {
+    color: #FFEB3B
+}
+
+
+/*  A ser implmentado
+button.btn-cry {
+    width: 20px;
+    height: 20px;
+} */
+
+
+.pagination  {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+.pagination button {
+    padding: .25rem .5rem;
+    margin: .25rem 0;
+    font-size: .625rem;
+    color: #fff;
+    background-color: #6c79db;
+    border: none;
+    border-radius: 1rem;
+}
+
+
+/* 1. REMOVE O AZUL PADRÃO E CONFIGURA O FUNDO DE TODAS AS BARRAS */
+progress[class^="gameboy-progress-"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: 12px;
+    border: none;
+    background-color: #e0e0e0; /* Cor cinza para a parte não preenchida */
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+progress[class^="gameboy-progress-"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: 12px;
+    border: none;
+    background-color: #e0e0e0; /* Cor cinza para a parte vazia */
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+
+progress[class^="gameboy-progress-"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #e0e0e0; /* Fundo cinza padrão da barra */
+    border: none;
+    display: block;
+    width: 100%;
+}
+
+
+/* 2. CORES PARA CHROME, SAFARI, EDGE (Usando o número do índice do .map) */
+.gameboy-progress-0::-moz-progress-bar{ background-color: #4caf50 !important; } /* Índice 0: HP (Verde) */
+.gameboy-progress-1::-webkit-progress-value { background-color: #f44336 !important; } /* Índice 1: Attack (Vermelho) */
+.gameboy-progress-2::-webkit-progress-value { background-color: #2196f3 !important; } /* Índice 2: Defense (Azul) */
+.gameboy-progress-3::-webkit-progress-value { background-color: #FF9800 !important; } /* Índice 3: Sp. Attack (Laranja) */
+.gameboy-progress-4::-webkit-progress-value { background-color: #9c27b0 !important; } /* Índice 4: Sp. Defense (Roxo) */
+.gameboy-progress-5::-webkit-progress-value { background-color: #ffeb3b !important; } /* Índice 5: Speed (Amarelo) */
+
+/* 3. CORES PARA FIREFOX (Usando o número do índice do .map) */
+.gameboy-progress-0::-moz-progress-bar { background-color: #4caf50 !important; }
+.gameboy-progress-1::-moz-progress-bar { background-color: #f44336 !important; }
+.gameboy-progress-2::-moz-progress-bar { background-color: #2196f3 !important; }
+.gameboy-progress-3::-moz-progress-bar { background-color: #FF9800 !important; }
+.gameboy-progress-4::-moz-progress-bar { background-color: #9c27b0 !important; }
+.gameboy-progress-5::-moz-progress-bar { background-color: #ffeb3b !important; }
+
+
+
+
+
+
+
+@media screen and (min-width: 300px) {
+    .navbar-menu-status {
+        height: 49px;
+        width: 388px;
+        border-radius: 0.1rem;
+        text-align: center;
+        align-content: center;
+    }
+}
+
+@media screen and (min-width: 376px) {
+    .navbar-menu-status {
+        height: 49px;
+        width: 388px;
+        border-radius: 0.1rem;
+        text-align: center;
+        align-content: center;
+    }
+}
+
+@media screen and (min-width: 380px) {
+        .pokemons {
+        grid-template-columns: 1fr;   
+    }
+  }
+
+  /* Foi pensado no smatwatch para não houvesse vazamento da imagem fora div */
+  @media screen and (min-width: 300px) {
+    .pokemons {
+      /* Estica a imagem para preencher toda a largura e altura do contêiner */
+      object-fit: fill; 
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+  }
+
+
+@media screen and (min-width: 576px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+} 
+
+@media screen and (min-width: 992px) {
+    .pokemons {
+    grid-template-columns: 1fr 1fr 1fr;   
+    }
+  }
