@@ -102,9 +102,9 @@ function SobreCritaLoadMoreItens(offset, limit){
             <img src="${pokemon.photo}" alt="${pokemon.name}">
         </button>  
             <nav class="navbar-menu-status">
-                
+               <!-- essa imagem seria implementada
             <li class="btn-img-ckedex"><img class="logo-pockedex " src="/assets/images/logos/logo-pokedex.png" alt=""></li>
-
+                -->
                     <ol class="btn-list-pokemon-ordenation">  
 
                             <li>    <a href="">About-status      </li>
