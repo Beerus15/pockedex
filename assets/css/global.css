@@ -1,165 +1,191 @@
 * {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: #f6f8fc;
-    /* background-color: rgb(246, 248, 252); opcional*/
+    background: radial-gradient(circle, #2c2c2c 0%, #0f0f0f 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
+/* Container do Equipamento Pokédex */
+.pokedex-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    height: 800px;
+    background-color: #dc0a2d;
+    border: 10px solid #8b0c1c;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    overflow: hidden;
+}
 
 .content {
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem; 
-    background-color: #fff;
-
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.navbar-menu-status{
+.flex-panel-left {
+    flex: 1.3;
     background-color: #dc0a2d;
-    height: 49px;
-    width: 100%;
+}
+
+.flex-panel-right {
+    flex: 1;
+    background-color: #e0e0e0;
+    border-left: 4px solid #8b0c1c;
+    overflow-y: auto;
+}
+
+/* Dobradiça Mecânica */
+.pokedex-hinge-device {
+    width: 35px;
+    background: linear-gradient(to right, #550000, #aa0000, #550000);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Estilização da Barra de Rolagem */
+.flex-panel-right::-webkit-scrollbar,
+.pokemons::-webkit-scrollbar {
+    width: 6px;
+}
+
+.flex-panel-right::-webkit-scrollbar-thumb,
+.pokemons::-webkit-scrollbar-thumb {
+    background-color: #8b0c1c;
+    border-radius: 10px;
+}
+
+/* Telas Auxiliares de Carregamento e Estado Vazio */
+.empty-state-msg {
+    display: flex;
+    height: 100%;
     align-items: center;
-    background-image: url('');
-}
-
-
-
-.btn-colun div {
-    display: flex;
-}
-/* Oculta os pokemons para mostrar status */
-.ocultadoPOkemon{
-    display: none;
-}
-
-.statusPOkemons{
-    display: flex;
-}
-
-
-.mostrarStatusPokemon{
-    display: block;
-}
-
-.blockPokemon{
-    display: none;
-}
-
-.btn-status-pokemon{
-display: flex;
-height: 100%;
-flex-direction: column;
-}
-.base-status{
-    display: flex;
-    list-style: none;
-    gap: 3rem;
-    padding: 1px;
-    white-space: nowrap;
-}
-
-.navbar-menu-status{
-    background-color: #dc0a2d;
-    height: 49px;
-    width: 100%;
-    align-content: center;
-}
-
-.navbar-menu-status a img {
-    object-fit: cover;
-}
-
-.navbar-menu-status  a {
-    color: #fff;
-    text-decoration: none;
-}
-
-
-
-.object-contain{
-    object-fit: cover;
-}
-
-
-
-nav.navbar-menu-status ol {
-    align-content: center;
-}
-
-
-
-nav#menu-status  {
-    gap: 1rem;
-    list-style: none;
-}
-
-.btn-base-status{
-    display: flex;
-
-}
-
-.logo-pockedex {
-    object-fit: contain;
-}
-
-.navbar-menu-status li img {
-    /* display: flex; */
-    display: flex;
-    width: 150%;
-}
-.btn-img-ckedex{
-    width: 300px;
-    display: flex;
-}
-
-
-.navbar-menu-status {
-    background-image: url('../images/logos/logo-pokedex.png');
-    object-fit: contain;
-    position: relative;
-    background-size: cover;
+    justify-content: center;
     text-align: center;
-    align-content: center;
+    color: #555;
+    font-style: italic;
+    padding: 2rem;
 }
 
-
-.btn-status-pokemon{
-    font-weight: bold;
-}
-
-.btn-list-pokemon-ordenation li {
-    list-style: none;
-    gap: 1rem;
-
-}
-
-.btn-list-pokemon-ordenation {
-    display: flex;
-    gap: 1rem;
-    font-size: small;
-    position: absolute;
-}
-
-.gameboy-progress0{
-    width: 100%;
-    background-color: transparent;
-}
-
-
-nav {
-    display: flex;
-}
-
-
-
-@media screen and (min-width: 992px) {
-    .content {
-    max-width: 992px;
-    height: auto;
-    margin: 1rem auto;
-    border-radius: 1rem;
+/* Responsividade Avançada */
+@media screen and (max-width: 992px) {
+    .pokedex-wrapper {
+        flex-direction: column;
+        height: auto;
+        max-width: 500px;
     }
-  }
+    .pokedex-hinge-device {
+        width: 100%;
+        height: 20px;
+    }
+    .flex-panel-right {
+        height: 550px;
+        border-left: none;
+        border-top: 4px solid #8b0c1c;
+    }
+}* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: radial-gradient(circle, #2c2c2c 0%, #0f0f0f 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container do Equipamento Pokédex */
+.pokedex-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    height: 800px;
+    background-color: #dc0a2d;
+    border: 10px solid #8b0c1c;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    overflow: hidden;
+}
+
+.content {
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-panel-left {
+    flex: 1.3;
+    background-color: #dc0a2d;
+}
+
+.flex-panel-right {
+    flex: 1;
+    background-color: #e0e0e0;
+    border-left: 4px solid #8b0c1c;
+    overflow-y: auto;
+}
+
+/* Dobradiça Mecânica */
+.pokedex-hinge-device {
+    width: 35px;
+    background: linear-gradient(to right, #550000, #aa0000, #550000);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Estilização da Barra de Rolagem */
+.flex-panel-right::-webkit-scrollbar,
+.pokemons::-webkit-scrollbar {
+    width: 6px;
+}
+
+.flex-panel-right::-webkit-scrollbar-thumb,
+.pokemons::-webkit-scrollbar-thumb {
+    background-color: #8b0c1c;
+    border-radius: 10px;
+}
+
+/* Telas Auxiliares de Carregamento e Estado Vazio */
+.empty-state-msg {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #555;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Responsividade Avançada */
+@media screen and (max-width: 992px) {
+    .pokedex-wrapper {
+        flex-direction: column;
+        height: auto;
+        max-width: 500px;
+    }
+    .pokedex-hinge-device {
+        width: 100%;
+        height: 20px;
+    }
+    .flex-panel-right {
+        height: 550px;
+        border-left: none;
+        border-top: 4px solid #8b0c1c;
+    }
+}

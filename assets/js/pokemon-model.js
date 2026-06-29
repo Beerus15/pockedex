@@ -1,10 +1,18 @@
-
 class Pokemon {
     number;
     name;
     type;
     types = [];
     photo;
-    cry; // a ser implmentado som dos pokemons
-    stats;
+    cry; 
+    stats = []; // Armazenará objetos estruturados { name, value }
+    height;
+    weight;
+    abilities = [];
+    baseExperience;
+    species;
+    description;
+    habitat;
+    genera;
+    evolutions = []; // Armazenará nós { name, photo }
 }

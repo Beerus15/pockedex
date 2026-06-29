@@ -1,112 +1,134 @@
-
+/* Configuração da Grid de Pokémon */
 .pokemons {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 5px;
+    overflow-y: auto;
+    flex: 1;
 }
 
-.button {
-    background-color: transparent;
+/* Elementos de Estilo Pokédex Hardware */
+.pokedex-device-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.main-lens {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #00f0ff 10%, #0077ff 70%);
+    border: 4px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00f0ff;
+}
+
+.status-leds {
+    display: flex;
+    gap: 6px;
+}
+
+.led-bulb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #222;
+}
+.led-bulb.red { background-color: #ff3b30; box-shadow: 0 0 6px #ff3b30; }
+.led-bulb.yellow { background-color: #ffcc00; box-shadow: 0 0 6px #ffcc00; }
+.led-bulb.green { background-color: #34c759; box-shadow: 0 0 6px #34c759; }
+
+/* Input Sênior de Busca */
+.search-bar-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+.search-bar-container input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 8px;
     border: none;
+    background-color: #232323;
+    color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.normal {
-    background-color: #a6a877;
+.search-bar-container button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00e6ff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-.grass {
-    background-color: #77c850;
+.search-bar-container button:hover {
+    background-color: #00b8cc;
 }
 
-.fire {
-    background-color: #ee7f30;
-}
+/* Cores de Tipos Mapeadas */
+.normal { background-color: #a6a877; }
+.grass { background-color: #77c850; }
+.fire { background-color: #ee7f30; }
+.water { background-color: #678fee; }
+.electric { background-color: #f7cf2e; }
+.ice { background-color: #98d5d7; }
+.ground { background-color: #dfbf69; }
+.flying { background-color: #a98ff0; }
+.poison { background-color: #a040a0; }
+.fighting { background-color: #bf3029; }
+.psychic { background-color: #f65687; }
+.dark { background-color: #725847; }
+.rock { background-color: #b8a137; }
+.bug { background-color: #a8b720; }
+.ghost { background-color: #6e5896; }
+.steel { background-color: #b9b7cf; }
+.dragon { background-color: #6f38f6; }
+.fairy { background-color: #f9aec7; }
 
-.water {
-    background-color: #678fee;
-}
-
-.electric {
-    background-color: #f7cf2e;
-}
-
-.ice {
-    background-color: #98d5d7;
-}
-
-.ground {
-    background-color: #dfbf69;
-}
-
-.flying {
-    background-color: #a98ff0;
-}
-
-.poison {
-    background-color: #a040a0;
-}
-
-.fighting {
-    background-color: #bf3029;
-}
-
-.psychic {
-    background-color: #f65687;
-}
-
-.dark {
-    background-color: #725847;
-}
-
-.rock {
-    background-color: #b8a137;
-}
-
-.bug {
-    background-color: #a8b720;
-}
-
-.ghost {
-    background-color: #6e5896;
-}
-
-.steel {
-    background-color: #b9b7cf;
-}
-
-.dragon {
-    background-color: #6f38f6;
-}
-
-.fairy {
-    background-color: #f9aec7;
-}
-
-
-
-
-
+/* Card individual */
 .pokemon {
     display: flex;
     flex-direction: column;
-    margin: .5rem;
     padding: 1rem;
     border-radius: 1rem;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pokemon:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+}
+
+.pokemon.selected-card {
+    outline: 3px solid #00e6ff;
+    box-shadow: 0 0 15px #00e6ff;
 }
 
 .pokemon .number {
     color: #000;
     text-align: right;
-    opacity: .3;
-    font-size: .625rem;
+    opacity: .4;
+    font-size: .75rem;
+    font-weight: bold;
 }
 
 .pokemon .name {
     color: #fff;
-    margin-bottom: 0.25;
+    margin-bottom: 0.25rem;
     text-transform: capitalize;
+    font-size: 0.95rem;
+    font-weight: bold;
 }
 
 .pokemon .detail {
@@ -116,192 +138,202 @@
     justify-content: space-between;
 }
 
-/* Daqui para baixo está revisado  */
-
 .pokemon .detail .types {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-
 .pokemon .detail .types .type {
     color: #fff;
     padding: .25rem .5rem;
-    margin:  .25rem 0;
-    font-size: .625rem;
+    margin: .25rem 0;
+    font-size: .65rem;
     border-radius: 1rem;
-    filter: brightness(1.1);
+    background: rgba(255,255,255,0.2);
     text-align: center;
+    text-transform: capitalize;
 }
-
 
 .pokemon .detail img {
-    max-width: 100%;
-    height: 70px;
+    max-width: 65px;
+    height: 65px;
+    object-fit: contain;
 }
 
-
-/* Cores de preenchimento do status do pokemon */
-
-
-.hp-color {
-    background-color: #4caf50
-}
-
-.attack-color {
-    color: #f44336
-}
-
-.defense-color {
-    color: #2196f3
-}
-
-.sp-atack-color {
-    color: #FF9800
-}
-
-.defense-color {
-    color: #9c27b0
-}
-.speed-color {
-    color: #FFEB3B
-}
-
-
-/*  A ser implmentado
-button.btn-cry {
-    width: 20px;
-    height: 20px;
-} */
-
-
-.pagination  {
+/* Seção de Paginação */
+.pagination {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
+    padding: 1rem 0 0 0;
 }
 
 .pagination button {
-    padding: .25rem .5rem;
-    margin: .25rem 0;
-    font-size: .625rem;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
     color: #fff;
-    background-color: #6c79db;
+    background-color: #232323;
+    border: 2px solid #555;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.pagination button:hover {
+    background-color: #444;
+    border-color: #00e6ff;
+}
+
+/* Painel de Detalhes (Direita) */
+.detail-view-container {
+    animation: slideIn 0.3s ease-out;
+}
+
+.detail-view-header {
+    background-color: #232323;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    color: #white;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+}
+
+.detail-view-header h2 {
+    color: #00e6ff;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.detail-view-header .genera-tag {
+    color: #aaa;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.detail-view-header img {
+    width: 140px;
+    height: 140px;
+    margin: 1rem auto;
+    display: block;
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.5));
+}
+
+.audio-cry-btn {
+    background-color: #444;
+    border: 1px solid #666;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.audio-cry-btn:hover { background-color: #555; }
+
+.poke-desc-box {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 0.9rem;
+    border-left: 5px solid #dc0a2d;
+    line-height: 1.4;
+}
+
+.biometrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+}
+
+/* Barras de Status Progressivas */
+.stats-card-box, .evolution-card-box {
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.box-title {
+    font-size: 1rem;
+    color: #8b0c1c;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.stat-entry-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+}
+
+.stat-name-lbl { width: 110px; font-weight: bold; color: #555; text-transform: uppercase; }
+.stat-num-val { width: 35px; text-align: right; margin-right: 8px; font-weight: bold; }
+
+progress[class^="gameboy-progress-"] {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    height: 10px;
     border: none;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+
+/* Customização dos Motores Webkit/Mozilla para preenchimento */
+.gameboy-progress-hp::-webkit-progress-value { background-color: #4caf50; }
+.gameboy-progress-attack::-webkit-progress-value { background-color: #f44336; }
+.gameboy-progress-defense::-webkit-progress-value { background-color: #2196f3; }
+.gameboy-progress-special-attack::-webkit-progress-value { background-color: #ff9800; }
+.gameboy-progress-special-defense::-webkit-progress-value { background-color: #9c27b0; }
+.gameboy-progress-speed::-webkit-progress-value { background-color: #ffeb3b; }
+
+.gameboy-progress-hp::-moz-progress-bar { background-color: #4caf50; }
+.gameboy-progress-attack::-moz-progress-bar { background-color: #f44336; }
+.gameboy-progress-defense::-moz-progress-bar { background-color: #2196f3; }
+.gameboy-progress-special-attack::-moz-progress-bar { background-color: #ff9800; }
+.gameboy-progress-special-defense::-moz-progress-bar { background-color: #9c27b0; }
+.gameboy-progress-speed::-moz-progress-bar { background-color: #ffeb3b; }
+
+/* Cadeia Evolutiva */
+.chain-evo-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.node-evolution { text-align: center; font-size: 0.75rem; }
+.node-evolution img { width: 55px; height: 55px; object-fit: contain; display: block; margin: 0 auto; }
+.arrow-separator { font-weight: bold; color: #dc0a2d; font-size: 1.2rem; }
+
+/* Animações e Skeletons */
+.skeleton-loader-card {
+    background: linear-gradient(90deg, #e0e0e0 25%, #ececec 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: skeletonMovement 1.4s infinite;
     border-radius: 1rem;
+    height: 120px;
 }
 
-
-/* 1. REMOVE O AZUL PADRÃO E CONFIGURA O FUNDO DE TODAS AS BARRAS */
-progress[class^="gameboy-progress-"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    display: block;
-    width: 100%;
-    height: 12px;
-    border: none;
-    background-color: #e0e0e0; /* Cor cinza para a parte não preenchida */
-    border-radius: 4px;
-    margin-bottom: 8px;
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(15px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-progress[class^="gameboy-progress-"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    display: block;
-    width: 100%;
-    height: 12px;
-    border: none;
-    background-color: #e0e0e0; /* Cor cinza para a parte vazia */
-    border-radius: 4px;
-    margin-bottom: 8px;
+@keyframes skeletonMovement {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
-
-
-progress[class^="gameboy-progress-"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #e0e0e0; /* Fundo cinza padrão da barra */
-    border: none;
-    display: block;
-    width: 100%;
-}
-
-
-/* 2. CORES PARA CHROME, SAFARI, EDGE (Usando o número do índice do .map) */
-.gameboy-progress-0::-moz-progress-bar{ background-color: #4caf50 !important; } /* Índice 0: HP (Verde) */
-.gameboy-progress-1::-webkit-progress-value { background-color: #f44336 !important; } /* Índice 1: Attack (Vermelho) */
-.gameboy-progress-2::-webkit-progress-value { background-color: #2196f3 !important; } /* Índice 2: Defense (Azul) */
-.gameboy-progress-3::-webkit-progress-value { background-color: #FF9800 !important; } /* Índice 3: Sp. Attack (Laranja) */
-.gameboy-progress-4::-webkit-progress-value { background-color: #9c27b0 !important; } /* Índice 4: Sp. Defense (Roxo) */
-.gameboy-progress-5::-webkit-progress-value { background-color: #ffeb3b !important; } /* Índice 5: Speed (Amarelo) */
-
-/* 3. CORES PARA FIREFOX (Usando o número do índice do .map) */
-.gameboy-progress-0::-moz-progress-bar { background-color: #4caf50 !important; }
-.gameboy-progress-1::-moz-progress-bar { background-color: #f44336 !important; }
-.gameboy-progress-2::-moz-progress-bar { background-color: #2196f3 !important; }
-.gameboy-progress-3::-moz-progress-bar { background-color: #FF9800 !important; }
-.gameboy-progress-4::-moz-progress-bar { background-color: #9c27b0 !important; }
-.gameboy-progress-5::-moz-progress-bar { background-color: #ffeb3b !important; }
-
-
-
-
-
-
-
-@media screen and (min-width: 300px) {
-    .navbar-menu-status {
-        height: 49px;
-        width: 388px;
-        border-radius: 0.1rem;
-        text-align: center;
-        align-content: center;
-    }
-}
-
-@media screen and (min-width: 376px) {
-    .navbar-menu-status {
-        height: 49px;
-        width: 388px;
-        border-radius: 0.1rem;
-        text-align: center;
-        align-content: center;
-    }
-}
-
-@media screen and (min-width: 380px) {
-        .pokemons {
-        grid-template-columns: 1fr;   
-    }
-  }
-
-  /* Foi pensado no smatwatch para não houvesse vazamento da imagem fora div */
-  @media screen and (min-width: 300px) {
-    .pokemons {
-      /* Estica a imagem para preencher toda a largura e altura do contêiner */
-      object-fit: fill; 
-      grid-template-columns: 1fr;
-      width: 100%;
-    }
-  }
-
-
-@media screen and (min-width: 576px) {
-    .pokemons {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-} 
-
-@media screen and (min-width: 992px) {
-    .pokemons {
-    grid-template-columns: 1fr 1fr 1fr;   
-    }
-  }

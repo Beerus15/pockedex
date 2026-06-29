@@ -1,160 +1,155 @@
-function convertPokemonTypesToLi(pokemonTypes) {
-    return pokemonTypes.map((typeSlot) => `<li class="type">${typeSlot.type.name}</li>`)
-}
+const pokemonListElement = document.getElementById('pokemonList');
+const loadMoreButton = document.getElementById('LoadMoreButton');
+const detailsPanelElement = document.getElementById('pokedexDetailsPanel');
+const inputSearch = document.getElementById('inputSearch');
+const btnSearch = document.getElementById('btnSearch');
 
-function convertPokemonNumerationPadron(pokemon) {
-    // Transforma o número em texto e garante que ele tenha pelo menos 3 dígitos preenchendo com '0'
-    return `${String(pokemon.number).padStart(3, '0')}`;
-}
-
-
-const pokemonList = (document.getElementById('pokemonList')); // estamos pegando nossa lista pokemon
-
-const LoadMoreButton = document.getElementById('LoadMoreButton')
-
-const maxRecords = 151
-const limit = 10;
+const maxRecords = 151;
+const limit = 12;
 let offset = 0;
+let loadedPokemonsMap = {}; // Armazena em memória para evitar requests extras no clique
 
-                   // código do cry para ser implmentado mais a frente
-
-
-// Pega os itens de pokemon com getPokemon, mapeia os itens de li com
-// função map, junta todos os li sem separador usando join('')
-
-
-
-function loadPokemonItens(offset, limit){
-    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
-        const newHtml =  pokemons.map((pokemon) => `
-        
-        <li class="pokemon ${pokemon.type}">
-                        <span class="number">#${convertPokemonNumerationPadron(pokemon)}</span>
-                        <span class="name">${pokemon.name}</span>
-
-                        <div class="detail">  
-                            <ol class="types">
-                            ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-                            </ol>
-                        <button type="button" class="button"><img  id="${pokemon.number}" src="${pokemon.photo}" alt="${pokemon.name}">
-</button>
-                        </div>
-                    </li>
-            
-        
-        `).join(''); // retorna a lista como string e retorna todos elemento com função join
-        pokemonList.innerHTML += newHtml;
-        
-        pokemons.forEach((pokemon) => {
-            document.getElementById(`${pokemon.number}`).onclick = (e) => {
-                if(e.target.tagName == 'IMG'){
-                    let ocultador = document.getElementById('pokemonList');
-                    ocultador.className = 'ocultadoPOkemon';
-                }
-
-                const pokemonNumber = e.target.getAttribute('data-number');
-                SobreCritaLoadMoreItens(pokemon.number);
-            }
-        });
-    }); // Fechamento do then que faltava no seu original
+function showGridSkeletons() {
+    pokemonListElement.innerHTML = Array(6).fill(0).map(() => `
+        <li class="skeleton-loader-card"></li>
+    `).join('');
 }
 
-loadPokemonItens(offset, limit) 
-
-
-
-    // Se clicou no botão do Pokémon (ou na imagem dentro dele)
-
-// document.addEventListener('click', (event) => {
-//     if (event.target.closest('.button')) {
-//         let ocultador = document.getElementById('pokemonList');
-//         ocultador.className = 'ocultadoPOkemon';
-
-//         let mostrarStatus = document.getElementById()
-//         mostrarStatus.className = 'mostrarStatusPokemon';
+async function loadPokemonItens(currentOffset, currentLimit) {
+    showGridSkeletons();
+    try {
+        const pokemons = await pokeApi.getPokemons(currentOffset, currentLimit);
         
-//     }
-// });
+        // Mapeia os dados renderizados no cache local
+        pokemons.forEach(p => { loadedPokemonsMap[p.name] = p; });
 
+        const newHtml = pokemons.map((pokemon) => `
+            <li class="pokemon ${pokemon.type}" onclick="selectPokemon('${pokemon.name}')" id="card-${pokemon.name}">
+                <span class="number">#${String(pokemon.number).padStart(3, '0')}</span>
+                <span class="name">${pokemon.name}</span>
 
-
-
-
-const mostrarStatusPokemon = (document.getElementById('visivelStatus')); // estamos pegando nossa lista pokemon
-function SobreCritaLoadMoreItens(offset, limit){
-    // A ÚNICA MODIFICAÇÃO É AQUI: Forçamos a API a buscar a partir do Pokémon clicado (offset - 1) e trazer apenas 1 item
-    pokeApi.getPokemons(offset - 1, 1).then((pokemons = []) => {
-        
-        // Declarando corretamente o primeiro pokemon da lista
-        const pokemon = pokemons[0]; 
-        
-
-        // let clicouPokemon = [];
-        // pokemons.forEach(function(pokemon) {
-        //     if(pokemon.photo = 'click')
-        //         clicouPokemon.push(pokemon.number)
-        // });
-
-        const newHtml = `        
-      <div id="statusPOkemons" class="detail">          
-        
-        <button type="button" class="button">
-            <img src="${pokemon.photo}" alt="${pokemon.name}">
-        </button>  
-            <nav class="navbar-menu-status">
-               <!-- essa imagem seria implementada
-            <li class="btn-img-ckedex"><img class="logo-pockedex " src="/assets/images/logos/logo-pokedex.png" alt=""></li>
-                -->
-                    <ol class="btn-list-pokemon-ordenation">  
-
-                            <li>    <a href="">About-status      </li>
-                            <li>   <a href="">base status</a>     </li>
-                            <li>    <a href="">evolution</a>      </li>
-                            <li>    <a href="">map</a>            </li>    
+                <div class="detail">
+                    <ol class="types">
+                        ${pokemon.types.map((type) => `<li class="type">${type}</li>`).join('')}
                     </ol>
-             </nav>
+                    <img src="${pokemon.photo}" alt="${pokemon.name}">
+                </div>
+            </li>
+        `).join('');
 
-             <ol class="base-status">
-                         <div class="container-pai">
-                                <li class="">   
-                                            
-                                                    <div class="btn-status-pokemon"> 
-                                                        ${pokemon.statsName.map((stat) => `<li class="type ${stat}">${stat}</li>`).join('')}
-                                                    </div>
-                                                    <div  class="btn-status-pokemon">
-                                                        ${pokemon.base_stat.map((statsValues) => `<li class="type ${statsValues}">${statsValues}</li>`).join('')}
-                                                    </div>
-                                                    <div  class="btn-status-pokemon">  
-                                                        ${pokemon.base_stat.map((statsValues, stat) => `<progress  class="gameboy-progress-${stat}" value=${statsValues} max="100"></progress>`).join('')}
-                                                    </div>
-                                      
-                               </li>
-                         </div>
-             </ol>
+        pokemonListElement.innerHTML = newHtml;
+    } catch (error) {
+        pokemonListElement.innerHTML = `<p style="color:white; padding:1rem;">Ocorreu um erro ao carregar a lista.</p>`;
+    }
+}
 
-     </div>
+function selectPokemon(name) {
+    // Adiciona destaque visual ao card selecionado
+    document.querySelectorAll('.pokemon').forEach(card => card.classList.remove('selected-card'));
+    const selectedCard = document.getElementById(`card-${name}`);
+    if (selectedCard) selectedCard.classList.add('selected-card');
 
+    const pokemon = loadedPokemonsMap[name];
+    if (pokemon) {
+        renderDetailsPanel(pokemon);
+    }
+}
+
+function renderDetailsPanel(p) {
+    detailsPanelElement.innerHTML = `
+        <article class="detail-view-container">
+            <header class="detail-view-header">
+                <h2>${p.name}</h2>
+                <div class="genera-tag">${p.genera}</div>
+                <img src="${p.photo}" alt="${p.name}">
+                ${p.cry ? `<button class="audio-cry-btn" onclick="new Audio('${p.cry}').play()">🔊 Ouvir Cry</button>` : ''}
+            </header>
+
+            <div class="poke-desc-box">"${p.description}"</div>
+
+            <section class="biometrics-grid">
+                <div><strong>Altura:</strong> ${p.height} m</div>
+                <div><strong>Peso:</strong> ${p.weight} kg</div>
+                <div><strong>Habitat:</strong> ${p.habitat}</div>
+                <div><strong>Exp. Base:</strong> ${p.baseExperience}</div>
+                <div style="grid-column: span 2; text-transform: capitalize;">
+                    <strong>Habilidades:</strong> ${p.abilities.join(', ')}
+                </div>
+            </section>
+
+            <section class="stats-card-box">
+                <h3 class="box-title">Base Stats</h3>
+                ${p.stats.map((s) => `
+                    <div class="stat-entry-row">
+                        <span class="stat-name-lbl">${s.name.replace('-', ' ')}</span>
+                        <span class="stat-num-val">${s.value}</span>
+                        <progress class="gameboy-progress-${s.name}" value="${s.value}" max="200"></progress>
+                    </div>
+                `).join('')}
+            </section>
+
+            <section class="evolution-card-box">
+                <h3 class="box-title">Cadeia Evolutiva</h3>
+                <div class="chain-evo-flex">
+                    ${p.evolutions.map((evo, i) => `
+                        <div class="node-evolution">
+                            <img src="${evo.photo || 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png'}" alt="${evo.name}">
+                            <span style="text-transform: capitalize;">${evo.name}</span>
+                        </div>
+                        ${i < p.evolutions.length - 1 ? '<span class="arrow-separator">↓</span>' : ''}
+                    `).join('')}
+                </div>
+            </section>
+        </article>
+    `;
+}
+
+async function handleSearch() {
+    const query = inputSearch.value.trim();
+    if (!query) return;
+
+    detailsPanelElement.innerHTML = `<div class="empty-state-msg"><p>Buscando registros...</p></div>`;
+    
+    try {
+        const searchedPokemon = await pokeApi.getPokemonByNameOrId(query);
+        loadedPokemonsMap[searchedPokemon.name] = searchedPokemon;
+        
+        // Renderiza apenas ele na grid
+        pokemonListElement.innerHTML = `
+            <li class="pokemon ${searchedPokemon.type}" onclick="selectPokemon('${searchedPokemon.name}')" id="card-${searchedPokemon.name}">
+                <span class="number">#${String(searchedPokemon.number).padStart(3, '0')}</span>
+                <span class="name">${searchedPokemon.name}</span>
+                <div class="detail">
+                    <ol class="types">
+                        ${searchedPokemon.types.map((type) => `<li class="type">${type}</li>`).join('')}
+                    </ol>
+                    <img src="${searchedPokemon.photo}" alt="${searchedPokemon.name}">
+                </div>
+            </li>
         `;
+        selectPokemon(searchedPokemon.name);
+    } catch {
+        pokemonListElement.innerHTML = `<p style="color:white; padding:1rem;">Nenhum Pokémon encontrado com este critério.</p>`;
+        detailsPanelElement.innerHTML = `<div class="empty-state-msg"><p>Entrada inválida.</p></div>`;
+    }
+}
 
-        // ESSA LINHA MUDOU DE LUGAR: Agora ela está dentro do .then() e vai funcionar!
-        mostrarStatusPokemon.innerHTML = newHtml;
-    }); 
- }
+// Ouvintes de Eventos
+loadMoreButton.addEventListener('click', () => {
+    offset += limit;
+    const nextPageRecords = offset + limit;
 
-                
-                    // <li class="btn-base-status">
-                    //         <ol class="base-status">
-                    //             <li>   
-                    //                 <div class="btn-status-pokemon"> 
-                    //                     ${pokemon.statsName.map((stat) => `<li class="type ${stat}">${stat}</li>`).join('')}
-                    //                 </div>
-                    //                 <div  class="btn-status-pokemon">
-                    //                     ${pokemon.base_stat.map((statsValues) => `<li class="type ${statsValues}">${statsValues}</li>`).join('')}
-                    //                 </div>
-                    //                 <div  class="btn-status-pokemon">  
-                    //                     ${pokemon.base_stat.map((statsValues) => `<progress class="gameboy-progress" value=${statsValues} max="100"></progress>`).join('')}
-                    //                 </div>
-                    //             </li> 
-                    //         </ol>
-                    //     </li>
+    if (nextPageRecords >= maxRecords) {
+        const newLimit = maxRecords - offset;
+        loadPokemonItens(offset, newLimit);
+        loadMoreButton.parentElement.removeChild(loadMoreButton);
+    } else {
+        loadPokemonItens(offset, limit);
+    }
+});
 
+btnSearch.addEventListener('click', handleSearch);
+inputSearch.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); });
+
+// Inicialização da primeira página
+loadPokemonItens(offset, limit);
